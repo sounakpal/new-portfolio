@@ -3,6 +3,7 @@ templateKey: index-page
 title: Hi I am Sounak
 image: /img/home-jumbotron.jpg
 heading: Front-end developer. Based in India
+videoUrl: HSsqzzuGTPo
 subheading: Front-end developer. Based in India
 mainpitch:
   title: Why Kaldi

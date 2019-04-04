@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
-import github from "../img/github-icon.svg";
-import logo from "../img/logo.svg";
+import linkedin from "../img/logo-linkedin.png"; 
+import posed from 'react-pose';
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -28,22 +28,22 @@ const Navbar = class extends React.Component {
           : this.setState({
               navBarActiveClass: ""
             });
+
       }
     );
   };
 
+
   render() {
     return (
       <nav
-        className="navbar is-transparent"
+        className="navbar is-fixed-bottom"
         role="navigation"
         aria-label="main-navigation"
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: "88px" }} />
-            </Link>
+            
             {/* Hamburger menu */}
             <div
               className={`navbar-burger burger ${this.state.navBarActiveClass}`}
@@ -54,45 +54,56 @@ const Navbar = class extends React.Component {
               <span />
               <span />
             </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
+            <MenuAnimation
+             className={`navbar-menu ${this.state.navBarActiveClass}`}
+            pose={this.state.navBarActiveClass ===  "is-active" ? "on" : "off"}
+            >
+            <div id="navMenu">
             <div className="navbar-start has-text-centered">
               <Link className="navbar-item" to="/about">
-                About
+                Skills
               </Link>
               <Link className="navbar-item" to="/products">
-                Products
+                Work
               </Link>
               <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
+                Resume
               </Link>
             </div>
             <div className="navbar-end has-text-centered">
               <a
                 className="navbar-item"
-                href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
+                href="https://linkedin.com/AustinGreen/gatsby-netlify-cms-boilerplate"
                 target="_blank"
-                rel="noopener noreferrer"
-              >
+                rel="noopener noreferrer">
                 <span className="icon">
-                  <img src={github} alt="Github" />
+                  <img src={linkedin} alt="LinkedIn" />
                 </span>
               </a>
             </div>
           </div>
+            </MenuAnimation>
+          </div>
+         
         </div>
       </nav>
     );
   }
 };
-
+const MenuAnimation = posed.div({
+  off: {
+    opacity: 0,
+    background: '#ff2'
+  },
+  on: {
+    opacity: 1,
+    background: '#fff',
+    transition: { 
+      opacity:{duration: 1300},
+      background: {duration:1000} 
+    }
+  }
+});
+            
 export default Navbar;
+
